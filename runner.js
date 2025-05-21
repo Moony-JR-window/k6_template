@@ -10,13 +10,18 @@
 
    const files = fs.readdirSync("./src/").filter(file => file.endsWith(".js"));
 
+   const reportDir = "./ReportHTML";
+   if (!fs.existsSync(reportDir)) {
+     fs.mkdirSync(reportDir, { recursive: true }); // ✅ Create folder if missing
+   }
+   
    files.forEach(file => {
        const safeFile = `"./src/${file}"`;
 
        console.log(`Running ${file}...`);
 
        try {
-           execSync(`cross-env K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=./restReport/html-report${resReport}.html k6 run --vus ${user} --duration ${duration} ${safeFile}`, { stdio: "inherit" });
+           execSync(`cross-env K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=${reportDir}/html-report-${resReport}.html k6 run --vus ${user} --duration ${duration} ${safeFile}`, { stdio: "inherit" });
        } catch (error) {
            console.error(`Error running ${file}:`, error.message);
        }
