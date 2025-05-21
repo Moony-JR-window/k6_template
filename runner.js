@@ -8,7 +8,8 @@
 
    console.log(`Running tests with duration=${duration}s and VUs=${user}`);
 
-   const files = fs.readdirSync("./src/").filter(file => file.endsWith(".js"));
+   const files = fs.readdirSync("./src/").filter(file => file.endsWith(".js")); // Running all file 
+// const files = ["testSimple.js"];  // Running Single File 
 
    const reportDir = "./ReportHTML";
    if (!fs.existsSync(reportDir)) {
