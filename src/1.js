@@ -1,6 +1,6 @@
 import http from 'k6/http';
 import { check } from 'k6';
-import * as encrypted from './build/cryptoEs.js';
+import * as encrypted from '../build/cryptoEs.js';
 
 export default function () {
     const res = http.get('https://test.k6.io');
