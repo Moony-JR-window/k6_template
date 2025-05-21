@@ -1,5 +1,5 @@
 
 export const config = {
-  baseUrl: 'https://qaint-id.wingbank.com',
+  baseUrl: 'https://test.k6.io',
   
 }; 

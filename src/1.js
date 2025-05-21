@@ -4,10 +4,10 @@ import * as encrypted from '../build/cryptoEs.js';
 import { config } from '../config/cofig.js';
 
 export default function () {
-    const res = http.get('https://test.k6.io');
+    const res = http.get(config.baseUrl);
     check(res, {
         'status is 200': (r) => r.status === 200,
     });
 }
 let text = encrypted.Encrypted("Hello", "Hello")
-console.log("================================ text", text+config.baseUrl)
+console.log("================================ text", text)
