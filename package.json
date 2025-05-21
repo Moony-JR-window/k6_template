@@ -7,7 +7,7 @@
     "start": "node build.js && node runner.js "
   },
   "keywords": [],
-  "author": "",
+  "author": "mony.rorn <mony.rorn@wingbank.com.kh>",
   "license": "ISC",
   "description": "",
   "dependencies": {
@@ -20,5 +20,6 @@
     "cross-env": "^7.0.3",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1"
-  }
+  },
+  "repository": "https://github.com/Moony-JR-window/k6_template.git"
 }

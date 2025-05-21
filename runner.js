@@ -2,7 +2,7 @@
    const { execSync } = require("child_process");
 
    // Get duration and user count from process arguments
-   const duration = process.argv[3] || "1";
+   const duration = process.argv[3] || "1s";
    const user = process.argv[2] || "1";
     const resReport = process.argv[4] || "TC01";
 
