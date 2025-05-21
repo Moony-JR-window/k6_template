@@ -12,7 +12,7 @@
 
    const reportDir = "./ReportHTML";
    if (!fs.existsSync(reportDir)) {
-     fs.mkdirSync(reportDir, { recursive: true }); // ✅ Create folder if missing
+     fs.mkdirSync(reportDir, { recursive: true }); //  Create folder if missing
    }
    
    files.forEach(file => {
@@ -21,6 +21,7 @@
        console.log(`Running ${file}...`);
 
        try {
+        //Create HTML report + runing all script 
            execSync(`cross-env K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=${reportDir}/html-report-${resReport}.html k6 run --vus ${user} --duration ${duration} ${safeFile}`, { stdio: "inherit" });
        } catch (error) {
            console.error(`Error running ${file}:`, error.message);
