@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { check } from 'k6';
 import * as encrypted from '../build/cryptoEs.js';
+import { config } from '../config/cofig.js';
 
 export default function () {
     const res = http.get('https://test.k6.io');
@@ -9,4 +10,4 @@ export default function () {
     });
 }
 let text = encrypted.Encrypted("Hello", "Hello")
-console.log("================================ text", text)
+console.log("================================ text", text+config.baseUrl)
