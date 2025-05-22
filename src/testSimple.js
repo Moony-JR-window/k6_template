@@ -11,7 +11,13 @@ export default function () {
     });
 }
 
-const text = encrypted.Encrypted("Hello", "Hello");
+const phoneNumber = encrypted.encrypt("2008");
+const DecryptPhoneNumber = encrypted.decrypt(phoneNumber);
+
+console.log(phoneNumber,"======Encrypt ");
+console.log(DecryptPhoneNumber," =======Decryptiono");
+
+
 const user = callCvsfile(config.payment)
 console.log(`Using user LOGIN_ID2: ${user.LOGIN_ID2}`);
 console.log(`Using user LOGIN_ID3: ${user.LOGIN_ID3}`);

@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "crypto-js": "^4.2.0",
+    "dotenv": "^16.5.0",
     "esbuild": "^0.25.4",
     "k6-html-reporter": "^1.0.5",
     "papaparse": "^5.5.3",
