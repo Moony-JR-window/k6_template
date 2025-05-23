@@ -1,20 +1,32 @@
-
 import { parseCSV } from '../build/csv-loader.js';
 import { SharedArray } from 'k6/data';
 
 export const config = {
   baseUrl: 'https://test.k6.io',
-  acc: open('../data/acc.csv'), // Parsed structured data
-  wingUrl:'https://gwtest.wingmoney.com:4447/WingPayGW'
+  csvFiles: {
+    accounts: '../data/acc.csv',
+    payments: '../data/payments.csv',
+    // users: '../data/users.csv'
+    // Add more files as needed
+  },
+  wingUrl: 'https://gwtest.wingmoney.com:4447/WingPayGW'
 };
 
-// const paymentData = new SharedArray('acc_data', () => parseCSV(open('../data/acc.csv')));
+const csvData = {};
+Object.entries(config.csvFiles).forEach(([name, path]) => {
+  csvData[name] = new SharedArray(`${name}_data`, () => {
+    return parseCSV(open(path));
+  });
+});
 
-export async function callCvsfile(paymentFile) {
-  const paymentData = new SharedArray('acc_data', () => parseCSV(paymentFile));
-  console.log("==================", paymentData);
-  let data = paymentData[__VU % paymentData.length];
-  console.log(data);
+// 3. Unified accessor function
+export function callCvsfile(fileKey) {
+  if (!csvData[fileKey]) {
+    throw new Error(`Unknown file key: ${fileKey}. Available: ${Object.keys(csvData).join(', ')}`);
+  }
   
+  const data = csvData[fileKey][__VU % csvData[fileKey].length];
+  console.log(`Using ${fileKey} data:`, data);
   return data;
 }
+

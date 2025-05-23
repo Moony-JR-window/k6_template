@@ -3,9 +3,8 @@ import { check } from 'k6';
 import * as encrypted from '../build/cryptoEs.js';
 import { config, callCvsfile } from '../config/cofig.js';
 
-export default async function AccessToken() {
-    // Only change: use config.payment directly without open()
-     let csv = await callCvsfile(config.acc);
+export default function AccessToken() {
+     let csv = callCvsfile('accounts');
     console.log("========== this is round",csv.round);
     let phoneNumber = encrypted.encrypt(csv.acc);
     const data = {
@@ -17,6 +16,7 @@ export default async function AccessToken() {
         grant_type: 'password',
         application_id: 'WINGPAY',
     };
+        console.log("========== this is round",data);
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
     };
