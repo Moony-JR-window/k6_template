@@ -25,7 +25,7 @@ export function callCvsfile(fileKey) {
     throw new Error(`Unknown file key: ${fileKey}. Available: ${Object.keys(csvData).join(', ')}`);
   }
   
-  const data = csvData[fileKey][__VU % csvData[fileKey].length];
+  const data = csvData[fileKey][__ITER % csvData[fileKey].length];
   console.log(`Using ${fileKey} data:`, data);
   return data;
 }

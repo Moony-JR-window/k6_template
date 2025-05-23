@@ -13,16 +13,12 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
-    "dotenv": "^16.5.0",
     "esbuild": "^0.25.4",
     "k6-html-reporter": "^1.0.5",
-    "papaparse": "^5.5.3",
-    "path-browserify": "^1.0.1"
+    "papaparse": "^5.5.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1"
+    "cross-env": "^7.0.3"
   },
   "repository": "https://github.com/Moony-JR-window/k6_template.git"
 }
